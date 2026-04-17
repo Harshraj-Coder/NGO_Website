@@ -1,0 +1,557 @@
+/* ================= GLOBAL ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f5f3ef;
+color:#333;
+line-height:1.6;
+}
+
+/* ================= HERO ================= */
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background Image */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/images/treehero.webp") no-repeat center/cover;
+  filter: brightness(60%);
+  z-index: -1;
+}
+
+/* Overlay Content */
+.hero-overlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+/* Heading */
+.hero-overlay h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Paragraph */
+.hero-overlay p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* ================= INTRO ================= */
+
+.intro{
+padding:90px 20%;
+text-align:center;
+background:white;
+}
+
+.intro h2{
+font-size:38px;
+margin-bottom:20px;
+color:#1b4332;
+}
+
+.intro p{
+color:#555;
+font-size:16px;
+line-height:1.7;
+}
+
+/* ================= KEY INITIATIVES ================= */
+
+.projects{
+padding:100px 10%;
+background:#e9ece9;
+}
+
+.projects h2{
+text-align:center;
+font-size:44px;
+color:#1b4332;
+margin-bottom:60px;
+}
+
+/* Grid */
+
+.project-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:50px;
+max-width:1200px;
+margin:auto;
+}
+
+/* Card */
+
+.card{
+background:white;
+border-radius:14px;
+overflow:hidden;
+
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* Image */
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+/* Content */
+
+.card-content{
+padding:28px;
+}
+
+.card-content h3{
+font-size:26px;
+color:#1b4332;
+margin-bottom:12px;
+}
+
+.card-content p{
+font-size:16px;
+color:#555;
+line-height:1.7;
+margin-bottom:18px;
+}
+
+.card-content a{
+color:#2e7d32;
+font-weight:600;
+text-decoration:none;
+}
+
+.card-content a:hover{
+text-decoration:underline;
+}
+
+/* ================= COMMUNITY SECTION ================= */
+
+.community{
+padding:110px 10%;
+background:#f4f8f5;
+}
+
+.community-container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+max-width:1200px;
+margin:auto;
+}
+
+/* Text */
+
+.community-text h2{
+font-size:40px;
+color:#1b4332;
+margin-bottom:20px;
+}
+
+.community-text p{
+color:#555;
+margin-bottom:15px;
+line-height:1.7;
+font-size:16px;
+}
+
+/* List */
+
+.community-list{
+list-style:none;
+margin:25px 0;
+}
+
+.community-list li{
+margin-bottom:12px;
+font-size:16px;
+color:#333;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.community-list i{
+color:#2e7d32;
+font-size:18px;
+}
+
+/* Button */
+
+.community-btn{
+display:inline-block;
+margin-top:20px;
+
+background:#2e7d32;
+color:white;
+
+padding:14px 28px;
+border-radius:8px;
+
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.community-btn:hover{
+background:#1b5e20;
+transform:translateY(-3px);
+}
+
+/* Image */
+
+.community-image img{
+width:100%;
+border-radius:10px;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.community-container{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.community-list li{
+justify-content:center;
+}
+
+}
+
+/* ================= IMPACT ================= */
+
+.impact{
+padding:100px 10%;
+text-align:center;
+background:white;
+}
+
+.impact h2{
+font-size:42px;
+margin-bottom:50px;
+color:#1b4332;
+}
+
+.impact-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+max-width:1000px;
+margin:auto;
+}
+
+.impact-grid div{
+background:#f4f7f4;
+padding:35px;
+border-radius:10px;
+}
+
+.impact-grid h3{
+font-size:42px;
+color:#2e7d32;
+margin-bottom:5px;
+}
+
+/* ================= COMMENTS ================= */
+
+.comments-section{
+padding:100px 10%;
+background:#f4f8f5;
+text-align:center;
+}
+
+.comments-section h2{
+font-size:36px;
+color:#1b4332;
+margin-bottom:30px;
+}
+
+/* input box */
+
+.comment-box{
+max-width:600px;
+margin:0 auto 40px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.comment-box input,
+.comment-box textarea{
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:14px;
+}
+
+.comment-box textarea{
+min-height:100px;
+resize:none;
+}
+
+.comment-box button{
+background:#2e7d32;
+color:white;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.comment-box button:hover{
+background:#1b5e20;
+transform:translateY(-2px);
+}
+
+/* comments list */
+
+.comment-list{
+max-width:700px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+/* individual comment */
+
+.comment{
+background:white;
+padding:15px 18px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+}
+
+.comment h4{
+font-size:14px;
+color:#1b4332;
+margin-bottom:4px;
+}
+
+.comment p{
+font-size:13px;
+color:#555;
+}
+
+/* date */
+
+.comment small{
+font-size:11px;
+color:#888;
+}
+
+/* ===== COMMENT CARD ===== */
+
+.comment{
+background:white;
+padding:16px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+text-align:left;
+position:relative;
+}
+
+
+/* ===== TOP BAR ===== */
+
+.comment-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:6px;
+}
+
+.comment-user h4{
+font-size:14px;
+color:#1b4332;
+}
+
+.comment-user small{
+font-size:11px;
+color:#888;
+}
+
+
+/* ===== MENU (TOP RIGHT) ===== */
+
+.comment-menu{
+display:flex;
+gap:10px;
+}
+
+.comment-menu span{
+cursor:pointer;
+font-size:14px;
+opacity:0.6;
+transition:0.2s;
+}
+
+.comment-menu span:hover{
+opacity:1;
+transform:scale(1.2);
+}
+
+
+/* ===== TEXT ===== */
+
+.comment-text{
+font-size:13px;
+color:#555;
+margin:8px 0;
+line-height:1.5;
+}
+
+
+/* ===== ACTIONS (LIKE) ===== */
+
+.comment-actions{
+display:flex;
+gap:15px;
+margin-top:6px;
+}
+
+.like-btn{
+cursor:pointer;
+font-size:13px;
+color:#555;
+display:flex;
+align-items:center;
+gap:5px;
+transition:0.2s;
+}
+
+.like-btn:hover{
+color:#2e7d32;
+}
+
+
+/* subtle like animation */
+
+.like-btn:active{
+transform:scale(1.2);
+}
+/* ===== ACTION BAR ===== */
+
+.comment-actions{
+display:flex;
+gap:18px;
+margin-top:8px;
+font-size:13px;
+color:#555;
+}
+
+.comment-actions span{
+cursor:pointer;
+transition:0.2s;
+}
+
+.comment-actions span:hover{
+color:#2e7d32;
+}
+
+/* heart */
+
+.heart-btn{
+color:#bbb;
+}
+
+.heart-btn.hearted{
+color:#e53935;
+}
+
+/* ===== REPLY BOX ===== */
+
+.reply-box{
+margin-top:10px;
+display:flex;
+gap:8px;
+}
+
+.reply-box input{
+flex:1;
+padding:6px;
+border-radius:6px;
+border:1px solid #ddd;
+font-size:12px;
+}
+
+.reply-box button{
+padding:6px 10px;
+border:none;
+background:#2e7d32;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* ===== REPLIES ===== */
+
+.reply-list{
+margin-top:10px;
+padding-left:20px;
+border-left:2px solid #eee;
+}
+
+.reply{
+margin-top:6px;
+font-size:12px;
+color:#444;
+}
+
+.reply-container{
+margin-top:10px;
+padding-left:25px;
+border-left:2px solid #eee;
+}
+
+.reply{
+background:#fafafa;
+padding:10px;
+border-radius:8px;
+margin-top:8px;
+}
+
+.hearted{
+color:red;
+}

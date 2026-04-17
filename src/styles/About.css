@@ -1,0 +1,109 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins', sans-serif;
+background:#f5f3ef;
+color:#333;
+}
+
+/* ================= HERO ================= */
+
+.about-hero{
+height:65vh;
+background:url("images/hero1.jpg") center/cover no-repeat;
+position:relative;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+/* Dark overlay */
+
+.overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.55);
+
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.overlay h1{
+color:white;
+font-size:52px;
+letter-spacing:3px;
+font-weight:600;
+}
+
+/* ================= ABOUT SECTIONS ================= */
+
+.about-section{
+padding:90px 10%;
+background:#ffffff;
+}
+
+.about-row{
+display:flex;
+align-items:center;
+gap:60px;
+}
+
+.about-row.reverse{
+flex-direction:row-reverse;
+}
+
+/* IMAGE */
+
+.about-image{
+width:100%;
+max-width:500px;
+height:340px; /* SAME HEIGHT FOR ALL IMAGES */
+overflow:hidden;
+border-radius:8px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.about-image img{
+width:100%;
+height:100%;
+object-fit:cover; /* keeps image proportional */
+display:block;
+}
+
+/* TEXT */
+
+.about-text{
+max-width:550px;
+}
+
+.about-text h2{
+font-size:38px;
+margin-bottom:15px;
+color:#1b4332;
+}
+
+.about-text h3{
+margin-top:15px;
+margin-bottom:8px;
+}
+
+.about-text p{
+line-height:1.7;
+margin-bottom:15px;
+color:#555;
+}
+
+.about-text ul{
+margin-left:20px;
+}
+
+.about-text li{
+margin-bottom:8px;
+}

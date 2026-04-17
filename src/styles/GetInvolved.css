@@ -1,0 +1,370 @@
+
+/* HERO */
+
+.get-hero{
+
+height: 60vh;
+
+background:
+linear-gradient(rgba(0,0,0,0.5),
+rgba(0,0,0,0.5)),
+
+url(images/hero2.jpg);
+
+background-size: cover;
+background-position: center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:white;
+text-align:center;
+
+}
+
+.get-hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.get-hero p{
+
+font-size:18px;
+opacity:0.9;
+
+}
+
+
+
+/* ================= DONATION SUPPORT - IMPROVED ================= */
+
+.donation-support{
+background:linear-gradient(135deg,#e8f5e9,#f1f8f4);
+padding:120px 80px;
+position:relative;
+overflow:hidden;
+}
+
+.donation-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:80px;
+}
+
+/* LEFT SIDE */
+
+.donation-left{
+flex:1;
+animation:fadeUp 1s ease forwards;
+opacity:0;
+}
+
+.donation-left h5{
+color:#2e7d32;
+letter-spacing:3px;
+font-size:14px;
+margin-bottom:18px;
+font-weight:600;
+}
+
+.donation-left h2{
+font-size:50px;
+margin-bottom:22px;
+color:#1b5e20;
+}
+
+.donation-left p{
+font-size:18px;
+color:#2f3e2f;
+line-height:1.8;
+margin-bottom:35px;
+max-width:620px;
+}
+
+
+/* BUTTON */
+
+.donate-big-btn{
+display:inline-block;
+background:#2e7d32;
+color:white;
+padding:18px 40px;
+border-radius:40px;
+font-size:18px;
+font-weight:600;
+text-decoration:none;
+transition:0.4s ease;
+box-shadow:0 8px 20px rgba(46,125,50,0.3);
+}
+
+.donate-big-btn:hover{
+background:#1b5e20;
+box-shadow:0 15px 35px rgba(27,94,32,0.5);
+transform:translateY(-3px);
+}
+
+/* RIGHT SIDE IMAGES */
+
+.donation-right{
+flex:1;
+display:flex;
+gap:25px;
+animation:fadeRight 1.2s ease forwards;
+opacity:0;
+}
+
+.donation-right img{
+width:100%;
+height:450px;
+object-fit:cover;
+border-radius:25px;
+padding:8px;
+background:white;
+box-shadow:0 15px 35px rgba(0,0,0,0.1);
+transition:0.5s ease;
+}
+
+.donation-right img:hover{
+transform:scale(1.05);
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeRight{
+from{
+opacity:0;
+transform:translateX(40px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.donation-container{
+flex-direction:column;
+gap:60px;
+}
+
+.donation-amounts{
+flex-direction:column;
+}
+
+.donation-right{
+flex-direction:column;
+}
+
+.donation-right img{
+width:100%;
+height:300px;
+}
+
+}
+
+/* SECTION */
+
+.engage-section{
+
+padding:80px 40px;
+background:#f7faf7;
+
+}
+
+
+
+
+.engage-container{
+
+display:flex;
+justify-content:center;
+gap:30px;
+
+flex-wrap:wrap;
+
+margin-top:40px;
+
+}
+
+
+
+
+.engage-card{
+
+background:white;
+padding:40px;
+width:300px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.3s;
+}
+
+.engage-card:hover{
+transform:translateY(-10px);
+}
+
+
+
+
+.engage-card i{
+font-size:40px;
+color:#2e7d32;
+margin-bottom:20px;
+}
+
+.engage-card h3{
+margin-bottom:15px;
+
+}
+
+
+
+
+.engage-card p{
+font-size:14px;
+margin-bottom:20px;
+opacity:0.8;
+}
+
+.engage-btn{
+background:#2e7d32;
+color:white;
+padding:10px 22px;
+border-radius:8px;
+text-decoration:none;
+border:none;
+cursor:pointer;
+transition:0.3s;
+}
+
+
+
+.engage-btn:hover{
+
+background:#388e3c;
+
+}
+
+
+
+
+/* NAVBAR DONATE BUTTON DIFFERENT */
+
+.navbar-donate-btn{
+
+background:#1b5e20;
+
+color:white;
+
+padding:10px 24px;
+
+border-radius:8px;
+
+text-decoration:none;
+
+transition:0.3s;
+
+}
+
+
+.navbar-donate-btn:hover{
+
+background:#2e7d32;
+
+}
+
+
+
+
+/* POPUP */
+
+.popup{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.6);
+
+justify-content:center;
+align-items:center;
+
+}
+
+
+
+.popup-box{
+
+background:white;
+
+padding:30px;
+
+border-radius:10px;
+
+width:350px;
+
+}
+
+
+
+.popup-box input,
+.popup-box textarea{
+
+width:100%;
+
+padding:10px;
+
+margin:10px 0;
+
+}
+
+
+
+.popup-box button{
+
+background:#2e7d32;
+
+color:white;
+
+border:none;
+
+padding:10px;
+
+width:100%;
+
+}
+
+
+
+.close{
+
+float:right;
+
+font-size:22px;
+
+cursor:pointer;
+
+}

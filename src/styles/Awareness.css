@@ -1,0 +1,329 @@
+html{
+scroll-behavior:smooth;
+}
+
+/* SLIDER */
+.slider{
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+
+.slides{
+height:100%;
+width:100%;
+position:relative;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+opacity:0;
+transition:opacity 1.2s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.slide.active{
+opacity:1;
+z-index:2;
+animation:zoomEffect 6s ease forwards;
+}
+
+@keyframes zoomEffect{
+0%{ transform:scale(1); }
+100%{ transform:scale(1.12); }
+}
+
+
+.overlay{
+background:rgba(0,0,0,0.4);
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.overlay h1{
+color:white;
+font-size:60px;
+letter-spacing:3px;
+opacity:0;
+transform:translateY(40px);
+animation:textReveal 1.5s ease forwards;
+animation-delay:0.5s;
+}
+
+@keyframes textReveal{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+
+/* SLIDER IMAGES */
+.slide1{
+background-image:url("images/school-awareness-slider.jpg");
+}
+
+.slide2{
+background-image:url("images/college-awareness-slider.jpg");
+}
+
+.slide3{
+background-image:url("images/public-awareness-slider.jpg");
+}
+
+
+
+/* DOTS */
+.dots{
+position:absolute;
+bottom:30px;
+width:100%;
+text-align:center;
+}
+
+.dot{
+height:12px;
+width:12px;
+margin:5px;
+background:white;
+border-radius:50%;
+opacity:0.5;
+}
+
+.dot.active{
+opacity:1;
+}
+
+/* INTRO */
+.education-intro{
+padding:80px 10% 40px;
+text-align:center;
+max-width:900px;
+margin:auto;
+}
+
+.education-intro h2{
+font-size:42px;
+margin-bottom:20px;
+color:#1f2328;
+letter-spacing:1px;
+}
+
+.education-intro p{
+font-size:18px;
+line-height:1.8;
+color:#555;
+}
+
+/* CONTENT */
+.education-container{
+padding:80px 10%;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.education-card{
+background:white;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,0.08);
+transition:all 0.35s ease;
+cursor:pointer;
+display:flex;
+flex-direction:column;
+}
+
+.education-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.education-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.education-info{
+padding:22px;
+}
+
+.education-info h3{
+font-size:20px;
+margin-bottom:8px;
+color:#1f2328;
+}
+
+.education-info p{
+font-size:15px;
+line-height:1.6;
+color:#555;
+}
+
+.category{
+margin-bottom:80px;
+}
+
+.category h2{
+font-size:34px;
+margin-bottom:35px;
+color:#1f2328;
+position:relative;
+}
+
+.category h2::after{
+content:"";
+width:60px;
+height:3px;
+background:#4CAF50;
+display:block;
+margin-top:10px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.overlay h1{
+font-size:32px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+}
+
+/* IMPACT - SIMPLE LIGHT GREEN */
+
+.education-impact{
+padding:60px 10%;
+background:#eaf5ee;
+color:#1b3a2f;
+text-align:center;
+}
+
+.impact-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+margin-top:40px;
+}
+
+.impact-box h3{
+font-size:40px;
+color:#4caf50;
+margin-bottom:5px;
+}
+
+.impact-box p{
+font-size:15px;
+color:#4a5f54;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.impact-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.impact-grid{
+grid-template-columns:1fr;
+}
+
+}
+/* Footer */
+.footer {
+  background: #0e1f1b;
+  color: #d6e3dc;
+  padding: 60px 40px 20px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-col h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.footer-col h3 {
+  color: #e4c98a;
+  margin-bottom: 18px;
+}
+
+.footer-col p {
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #d6e3dc;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+}
+
+.footer-socials {
+  margin-top: 10px;
+}
+
+.footer-socials a {
+  display: inline-block;
+  margin-right: 12px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
