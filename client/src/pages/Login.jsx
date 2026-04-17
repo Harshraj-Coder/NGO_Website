@@ -1,43 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../api/authApi";
 
 import "../styles/Login.css";
 import Navbar from "../components/Navbar";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState(""); // ✅ added
+
   const navigate = useNavigate();
+  const { setUser } = useContext(AuthContext);
 
-  // const [role, setRole] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (!role) {
-  //     alert("Please select a role");
-  //     return;
-  //   }
-
-  //   alert(`Login as ${role}`);
-  // };
-
-  const [role, setRole] = useState("");
-
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!role) {
-      alert("Please select a role");
-      return;
-    }
+    try {
+      const res = await loginUser({ email, password, role });
 
-    if (role === "Admin") {
-      navigate("/admin");
-    } else if (role === "Volunteer"){
-      navigate("/volunteer");
-    } else {
-      navigate("/");
+      console.log(res.data);
+
+      // Save token
+      localStorage.setItem("token", res.data.token);
+
+      // Save user in context (optional)
+      setUser(res.data.user);
+
+      alert("Login successful");
+
+      // Redirect
+      navigate("/dashboard");
+
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data?.message || "Login failed");
     }
-  }
+  };
 
   return (
     <>
@@ -47,7 +47,6 @@ function Login() {
         <div className="login-container">
           <div className="login-card">
 
-            {/* LOGO */}
             <div className="logo-circle">
               <img src="/images/logo.png" alt="Logo" className="logo-img" />
             </div>
@@ -56,9 +55,9 @@ function Login() {
             <p className="subtitle">
               Please enter your details to sign in.
             </p>
-  
-            <div className="role-selection">
 
+            {/* ROLE */}
+            <div className="role-selection">
               <label className="role-option">
                 <input
                   type="radio"
@@ -67,7 +66,6 @@ function Login() {
                   onChange={(e) => setRole(e.target.value)}
                 />
                 <div className="role-box">
-                  <i className="fa-solid fa-user-shield"></i>
                   <span>Admin</span>
                 </div>
               </label>
@@ -80,38 +78,37 @@ function Login() {
                   onChange={(e) => setRole(e.target.value)}
                 />
                 <div className="role-box">
-                  <i className="fa-solid fa-hand-holding-heart"></i>
                   <span>Volunteer</span>
                 </div>
               </label>
-
             </div>
 
             <div className="divider">OR</div>
 
             {/* FORM */}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <label>E-Mail Address</label>
               <input
                 type="email"
                 placeholder="Enter your email..."
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
 
               <label>Password</label>
-              <div className="password-wrapper">
-                <input
-                  type="password"
-                  placeholder="Password@123"
-                  required
-                />
-              </div>
+              <input
+                type="password"
+                placeholder="Password@123"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
               <div className="options">
                 <label>
                   <input type="checkbox" /> Remember me
                 </label>
-                <a href="#">Forgot password?</a>
               </div>
 
               <button type="submit" className="signin-btn">
@@ -123,6 +120,7 @@ function Login() {
                 <a href="/signup"> Sign up</a>
               </p>
             </form>
+
           </div>
         </div>
       </div>
