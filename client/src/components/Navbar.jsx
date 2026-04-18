@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { getUser, logout } from "../utils/auth";
+import { useNavigate } from "react-router-dom";
+
 import "../styles/Home.css";
 
 function Navbar() {
+  const user = getUser();
+  const navigate = useNavigate();
+
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (menu) => {
@@ -115,8 +121,23 @@ function Navbar() {
 
         {/* Buttons */}
         <div className="nav-buttons">
-          <Link to="/login" className="btn login-btn">Login</Link>
+          {/* <Link to="/login" className="btn login-btn">Login</Link> */}
           <Link to="/donate" className="btn donate-btn">Donate</Link>
+          {user ? (
+            <button
+              className="btn login-btn"
+              onClick={() => {
+                logout();
+                navigate("/login");
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/login" className="btn login-btn">
+              Login
+            </Link>
+          )}
         </div>
 
       </header>

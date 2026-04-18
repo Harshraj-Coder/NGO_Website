@@ -10,6 +10,7 @@
 
 /* ===== WRAPPER ===== */
 .admin-container {
+  padding-top: 60px;
   display: flex;
 }
 

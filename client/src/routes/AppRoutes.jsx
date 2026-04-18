@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { getUser } from "../utils/auth";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -16,7 +15,7 @@ import AdminDashboard from "../pages/Admin";
 import Donate from "../pages/Donate";
 
 const AppRoutes = () => {
-    const { user } = useContext(AuthContext);
+    const user = getUser();
 
     return (
         <Routes>
@@ -30,21 +29,31 @@ const AppRoutes = () => {
             <Route path="/treatment" element={<MedicalTreatment />} />
             <Route path="/awareness" element={<EducationAwareness />} />
             <Route path="/donate" element={<Donate />} />
+            
+            <Route path="*" element={<Home />} />
+            {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+            {/* <Route path="/volunteer" element={<VolunteerDashboardDashboard />} /> */}
 
             {/* Protected */}
             <Route
                 path="/admin"
                 element={
-                    user?.role === "admin" ? <AdminDashboard /> : <Navigate to="/login" />
+                    user?.role === "admin"
+                    ? <AdminDashboard />
+                    : <Navigate to="/login" />
                 }
             />
+            window.location.reload();
 
             <Route
                 path="/volunteer"
                 element={
-                    user?.role === "user" ? <VolunteerDashboard /> : <Navigate to="/login" />
+                    user?.role === "volunteer"
+                    ? <VolunteerDashboard />
+                    : <Navigate to="/login" />
                 }
             />
+            window.location.reload();
 
         </Routes>
     );

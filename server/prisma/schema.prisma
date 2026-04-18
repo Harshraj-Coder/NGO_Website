@@ -7,9 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int     @id
-  email    String? @db.VarChar(255)
-  password String? @db.VarChar(255)
-  role     String? @db.VarChar(255)
+model Volunteer {
+  id          Int     @default(autoincrement())
+  email       String  @id
+  username    String
+  phoneNo     String
+  password    String
+  availability String @default("no") // "yes" or "no"
+}
+
+model Admin {
+  id       Int    @default(autoincrement())
+  email    String @id
+  username String
+  phoneNo  String
+  password String
 }

@@ -1,43 +1,83 @@
 import React, { useState, useContext } from "react";
+import { setUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/authApi";
 
 import "../styles/Login.css";
 import Navbar from "../components/Navbar";
-import { AuthContext } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState(""); // ✅ added
+  const [role, setRole] = useState("");
+  const [username, setUsername] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
 
-  const handleLogin = async (e) => {
+  // ✅ LOGIN
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await loginUser({ email, password, role });
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-      console.log(res.data);
+      const data = await res.json();
+      console.log("LOGIN RESPONSE:", data);
 
-      // Save token
-      localStorage.setItem("token", res.data.token);
+      if (!data.user) {
+        alert(data.message);
+        return;
+      }
 
-      // Save user in context (optional)
-      setUser(res.data.user);
+      // ✅ FIX: attach role properly
+      const userWithRole = {
+        ...data.user,
+        role: data.role,
+      };
 
-      alert("Login successful");
+      setUser(userWithRole);
 
-      // Redirect
-      navigate("/dashboard");
+      // ✅ FIX: use correct role source
+      if (data.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/volunteer");
+      }
+
+      window.location.reload(); // needed since no context
 
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Login failed");
     }
   };
+
+  // ✅ REGISTER
+  const handleRegister = async () => {
+    const res = await fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+        username,
+        phoneNo,
+        role,
+      }),
+    });
+
+    const data = await res.json();
+    if (data.user) {
+      setUser(data.user);   // optional auto-login
+      alert("Registered successfully");
+    }
+  };
+
 
   return (
     <>
@@ -62,7 +102,7 @@ function Login() {
                 <input
                   type="radio"
                   name="role"
-                  value="Admin"
+                  value="admin"
                   onChange={(e) => setRole(e.target.value)}
                 />
                 <div className="role-box">
@@ -74,7 +114,7 @@ function Login() {
                 <input
                   type="radio"
                   name="role"
-                  value="Volunteer"
+                  value="volunteer"
                   onChange={(e) => setRole(e.target.value)}
                 />
                 <div className="role-box">
@@ -83,15 +123,21 @@ function Login() {
               </label>
             </div>
 
-            <div className="divider">OR</div>
 
             {/* FORM */}
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleSubmit}>
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+
               <label>E-Mail Address</label>
               <input
                 type="email"
-                placeholder="Enter your email..."
-                required
+                placeholder="abc@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -100,27 +146,32 @@ function Login() {
               <input
                 type="password"
                 placeholder="Password@123"
-                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <div className="options">
-                <label>
-                  <input type="checkbox" /> Remember me
-                </label>
-              </div>
+              <label>Phone No</label>
+              <input
+                type="text"
+                placeholder="1234567890"
+                value={phoneNo}
+                onChange={(e) => setPhoneNo(e.target.value)}
+              />
 
               <button type="submit" className="signin-btn">
                 Sign in
               </button>
 
-              <p className="signup-text">
-                Don't have an account yet?
-                <a href="/signup"> Sign up</a>
-              </p>
+              {/* 🔥 REGISTER OUTSIDE FORM LOGIC */}
             </form>
 
+            <button
+              type="button"
+              onClick={handleRegister}
+              className="reg-btn"
+            >
+              Register
+            </button>
           </div>
         </div>
       </div>

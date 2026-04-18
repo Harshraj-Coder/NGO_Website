@@ -137,7 +137,8 @@
 
 /* Inputs compact */
 .login-page input[type="email"],
-.login-page input[type="password"] {
+.login-page input[type="password"] 
+.login-page input[type="text"] {
   width: 100%;
   padding: 7px;
   margin: 4px 0 10px;
@@ -189,18 +190,23 @@
 }
 
 .signin-btn:hover {
-  background: #222;
+  background: #22222291;
 }
 
-/* Signup text */
-.signup-text {
-  text-align: center;
-  font-size: 12px;
+.reg-btn{
   margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(20, 172, 45, 0.99);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
 }
 
-.signup-text a {
-  text-decoration: none;
-  font-weight: 600;
-  color: black;
+.reg-btn:hover {
+  background: #144e1e;
 }

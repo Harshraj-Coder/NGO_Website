@@ -1,5 +1,6 @@
 /* ===== WRAPPER ===== */
 .volunteer-container {
+  padding-top: 60px;
   display: flex;
 }
 
